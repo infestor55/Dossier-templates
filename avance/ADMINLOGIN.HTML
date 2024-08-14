@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Review and Approval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #005f73;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .notification-section, .form-review-section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .notification-section h2, .form-review-section h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .notification-list, .form-review {
+            margin-bottom: 20px;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        .form-review label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-review p {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .button-group {
+            text-align: right;
+        }
+    </style>
+    <script>
+        function viewDetails(type, id) {
+            alert('View details for ' + type + ' request with ID ' + id);
+        }
+
+        function approveForm(type, id) {
+            alert(type + ' request with ID ' + id + ' has been approved.');
+            // Add actual logic for approval
+        }
+
+        function reviewForm(type, id) {
+            alert(type + ' request with ID ' + id + ' is under review.');
+            // Add actual logic for review
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">BKF HR Portal</div>
+    
+    <div class="container">
+        <header>
+            <h1>Dashboard - Review and Approval</h1>
+        </header>
+
+        <!-- Notification Section -->
+        <div class="notification-section">
+            <h2>Pending Notifications</h2>
+            <div class="notification-list">
+                <!-- Example notification items -->
+                <div class="notification-item">
+                    <p>Mission Request ID: 12345 - Pending approval</p>
+                    <button onclick="viewDetails('Mission Request', 12345)">View Details</button>
+                </div>
+                <div class="notification-item">
+                    <p>Loan Request ID: 67890 - Pending review</p>
+                    <button onclick="viewDetails('Loan Request', 67890)">View Details</button>
+                </div>
+                <!-- Additional notification items -->
+            </div>
+        </div>
+
+        <!-- Review Section for Admin -->
+        <div class="form-review-section">
+            <h2>Financial Processing Review</h2>
+            <div class="form-review">
+                <label for="adminName">Admin Name</label>
+                <p id="adminName">John Doe</p>
+
+                <label for="adminSubmissionDetails">Submission Details</label>
+                <p id="adminSubmissionDetails">Details of the submission...</p>
+
+                <div class="button-group">
+                    <button onclick="approveForm('Admin', 1)">Approve</button>
+                    <button onclick="reviewForm('Admin', 1)">Review</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Section for Supervisor -->
+        <div class="form-review-section">
+            <h2>Supervisor Review</h2>
+            <div class="form-review">
+                <label for="supervisorName">Supervisor Name</label>
+                <p id="supervisorName">Jane Smith</p>
+
+                <label for="supervisorSubmissionDetails">Submission Details</label>
+                <p id="supervisorSubmissionDetails">Details of the submission...</p>
+
+                <div class="button-group">
+                    <button onclick="approveForm('Supervisor', 2)">Approve</button>
+                    <button onclick="reviewForm('Supervisor', 2)">Review</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Section for HR -->
+        <div class="form-review-section">
+            <h2>HR Review</h2>
+            <div class="form-review">
+                <label for="hrName">HR Name</label>
+                <p id="hrName">Emily Johnson</p>
+
+                <label for="hrSubmissionDetails">Submission Details</label>
+                <p id="hrSubmissionDetails">Details of the submission...</p>
+
+                <div class="button-group">
+                    <button onclick="approveForm('HR', 3)">Approve</button>
+                    <button onclick="reviewForm('HR', 3)">Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

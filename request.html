@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan/Advance Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; /* Center vertically */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px; /* Reduced padding */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px; /* Reduced max-width */
+            box-sizing: border-box;
+            margin-top: 40px; /* Added buffer space */
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 12px; /* Reduced margin-bottom */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px; /* Reduced margin-bottom */
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px; /* Reduced font-size */
+        }
+
+        .btn {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            background-color: #f76c6c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px; /* Reduced font-size */
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #e55555;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px; /* Reduced margin-bottom */
+        }
+
+        .checkbox-group input {
+            margin-right: 8px; /* Reduced margin-right */
+        }
+
+        .file-input {
+            padding: 6px; /* Reduced padding */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px; /* Reduced font-size */
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Loan and Advances</h1>
+    <h2>Loan/Advance Request Form</h2>
+    <form>
+
+        <div class="form-group">
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" name="employeeId" required>
+            (AUTOMATICALLY FILLED)
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Select your department</option>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="amountRequested">Amount Requested (TND):</label>
+            <select id="amountRequested" name="amountRequested" required>
+                <option value="" disabled selected>Select amount</option>
+                <option value="50">50 TND</option>
+                <option value="100">100 TND</option>
+                <option value="150">150 TND</option>
+                <option value="200">200 TND</option>
+                <option value="250">250 TND</option>
+                <option value="50">500 TND</option>
+                <option value="100">1000 TND</option>
+                <option value="150">1500 TND</option>
+                <option value="200">2000 TND</option>
+                <option value="250">2500TND</option>
+                <option value="250">3000TND</option>
+                <!-- Continue with increments of 50 TND -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="purpose">Purpose of Loan/Advance(optional):</label>
+            <select id="purpose" name="purpose" required>
+                <option value="" disabled selected>Select purpose</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Medical">Medical</option>
+                <option value="Education">Education</option>
+                <option value="Vacation">Vacation</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="purpose">SELECT TYPE: Loan/Advance:</label>
+            <select id="purpose" name="purpose" required>
+                <option value="" disabled selected>Select purpose</option>
+                <option value="Emergency">Loan</option>
+                <option value="Medical">Advance</option>
+            </select>
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="purpose">FIRST MONTH OF REPAYMENT:</label>
+            <select id="purpose" name="purpose" required>
+                <option value="" disabled selected>MONTH</option>
+                <option value="Emergency">JAN</option>
+                <option value="Medical">FEV</option>
+                <option value="Education">MARS</option>
+                <option value="Vacation">MAY</option>
+                <option value="Other">JUIN</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="identityProof">Upload Identity Proof:</label>
+            <input type="file" id="identityProof" name="identityProof" accept="image/*,application/pdf" class="file-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="additionalDocuments">Upload Additional Documents:</label>
+            <input type="file" id="additionalDocuments" name="additionalDocuments" accept="image/*,application/pdf" class="file-input">
+        </div>
+
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Submit Request</button>
+    </form>
+</div>
+
+</body>
+</html>
+

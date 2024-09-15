@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Tracking Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .filter-section {
+        margin-bottom: 30px;
+      }
+      .filter-section label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      .filter-section select,
+      .filter-section input {
+        padding: 5px;
+        margin-right: 20px;
+      }
+      .investment-section {
+        margin-bottom: 40px;
+      }
+      .investment-section h2 {
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      .investment-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .investment-table th,
+      .investment-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      .investment-table th {
+        background-color: #007bff;
+        color: white;
+      }
+      .status-on-track {
+        color: green;
+        font-weight: bold;
+      }
+      .status-off-track {
+        color: red;
+        font-weight: bold;
+      }
+      .summary {
+        margin-top: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Investment Tracking Dashboard</h1>
+    <div class="container">
+      <!-- Filters -->
+      <div class="filter-section">
+        <label for="filter-investment-type">Filter by Investment Type:</label>
+        <select id="filter-investment-type">
+          <option value="all">All</option>
+          <option value="type1">Investment Type 1</option>
+          <option value="type2">Investment Type 2</option>
+          <option value="type3">Investment Type 3</option>
+        </select>
+
+        <label for="filter-budget-code">Filter by Budget Code:</label>
+        <select id="filter-budget-code">
+          <option value="all">All</option>
+          <option value="B001">B001</option>
+          <option value="B002">B002</option>
+          <option value="B003">B003</option>
+        </select>
+
+        <label for="filter-date">Filter by Date:</label>
+        <select id="filter-date">
+          <option value="all">All</option>
+          <option value="advance">Advance Date</option>
+          <option value="payment">Payment Date</option>
+        </select>
+
+        <label for="filter-start-date">Beginning Date:</label>
+        <input type="date" id="filter-start-date" />
+
+        <label for="filter-end-date">Ending Date:</label>
+        <input type="date" id="filter-end-date" />
+      </div>
+
+      <!-- Investment Type 1 -->
+      <div class="investment-section">
+        <h2>Investment Type 1</h2>
+        <table class="investment-table">
+          <thead>
+            <tr>
+              <th>Budget Code</th>
+              <th>Investment Name</th>
+              <th>Payment Method</th>
+              <th>Advance</th>
+              <th>Date of Advance</th>
+              <th>Payments</th>
+              <th>Date of Payments</th>
+              <th>Responsible Person</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="investment-type-1">
+            <!-- Rows will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Investment Type 2 -->
+      <div class="investment-section">
+        <h2>Investment Type 2</h2>
+        <table class="investment-table">
+          <thead>
+            <tr>
+              <th>Budget Code</th>
+              <th>Investment Name</th>
+              <th>Payment Method</th>
+              <th>Advance</th>
+              <th>Date of Advance</th>
+              <th>Payments</th>
+              <th>Date of Payments</th>
+              <th>Responsible Person</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="investment-type-2">
+            <!-- Rows will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Investment Type 3 -->
+      <div class="investment-section">
+        <h2>Investment Type 3</h2>
+        <table class="investment-table">
+          <thead>
+            <tr>
+              <th>Budget Code</th>
+              <th>Investment Name</th>
+              <th>Payment Method</th>
+              <th>Advance</th>
+              <th>Date of Advance</th>
+              <th>Payments</th>
+              <th>Date of Payments</th>
+              <th>Responsible Person</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="investment-type-3">
+            <!-- Rows will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary">
+        <h2>Overall Status</h2>
+        <p id="overall-status"></p>
+      </div>
+    </div>
+
+    <script>
+      // Example data for investments
+      const investments = {
+        type1: [
+          {
+            code: "B001",
+            name: "Investment A",
+            method: "Lease",
+            advance: 5000,
+            dateAdvance: "2024-08-01",
+            payments: 10000,
+            datePayment: "2024-08-10",
+            responsible: "John Doe",
+            target: 15000,
+          },
+          {
+            code: "B002",
+            name: "Investment B",
+            method: "Cash",
+            advance: 3000,
+            dateAdvance: "2024-08-05",
+            payments: 7000,
+            datePayment: "2024-08-15",
+            responsible: "Jane Smith",
+            target: 10000,
+          },
+        ],
+        type2: [
+          {
+            code: "B001",
+            name: "Investment C",
+            method: "Credit",
+            advance: 2000,
+            dateAdvance: "2024-08-03",
+            payments: 8000,
+            datePayment: "2024-08-12",
+            responsible: "John Doe",
+            target: 10000,
+          },
+          {
+            code: "B003",
+            name: "Investment D",
+            method: "Lease",
+            advance: 4000,
+            dateAdvance: "2024-08-07",
+            payments: 6000,
+            datePayment: "2024-08-17",
+            responsible: "Alice Johnson",
+            target: 10000,
+          },
+        ],
+        type3: [
+          {
+            code: "B002",
+            name: "Investment E",
+            method: "Cash",
+            advance: 1000,
+            dateAdvance: "2024-08-02",
+            payments: 4000,
+            datePayment: "2024-08-11",
+            responsible: "Jane Smith",
+            target: 5000,
+          },
+          {
+            code: "B003",
+            name: "Investment F",
+            method: "Credit",
+            advance: 2500,
+            dateAdvance: "2024-08-06",
+            payments: 2500,
+            datePayment: "2024-08-14",
+            responsible: "Alice Johnson",
+            target: 5000,
+          },
+        ],
+      };
+
+      // Function to update the investment tables
+      function updateInvestmentTables() {
+        let overallStatus = "On Track";
+        let totalAdvances = 0;
+        let totalPayments = 0;
+        let totalTarget = 0;
+
+        function populateTable(investments, tableId) {
+          const tbody = document.getElementById(tableId);
+          tbody.innerHTML = "";
+          investments.forEach((investment) => {
+            const status =
+              investment.advance + investment.payments >= investment.target
+                ? "On Track"
+                : "Off Track";
+            const statusClass =
+              status === "On Track" ? "status-on-track" : "status-off-track";
+
+            totalAdvances += investment.advance;
+            totalPayments += investment.payments;
+            totalTarget += investment.target;
+
+            if (status === "Off Track") {
+              overallStatus = "Off Track";
+            }
+
+            const row = `
+                        <tr>
+                            <td>${investment.code}</td>
+                            <td>${investment.name}</td>
+                            <td>${investment.method}</td>
+                            <td>$${investment.advance.toLocaleString()}</td>
+                            <td>${investment.dateAdvance}</td>
+                            <td>$${investment.payments.toLocaleString()}</td>
+                            <td>${investment.datePayment}</td>
+                            <td>${investment.responsible}</td>
+                            <td class="${statusClass}">${status}</td>
+                        </tr>
+                    `;
+            tbody.insertAdjacentHTML("beforeend", row);
+          });
+        }
+
+        // Filtered Data
+        const typeFilter = document.getElementById(
+          "filter-investment-type"
+        ).value;
+        const budgetFilter =
+          document.getElementById("filter-budget-code").value;
+        const dateFilter = document.getElementById("filter-date").value;
+        const startDate = new Date(
+          document.getElementById("filter-start-date").value
+        );
+        const endDate = new Date(
+          document.getElementById("filter-end-date").value
+        );
+
+        // Filter Function
+        function filterInvestments(type) {
+          return investments[type].filter((investment) => {
+            const matchesType =
+              typeFilter === "all" || investment.code === typeFilter;
+            const matchesBudget =
+              budgetFilter === "all" || investment.code === budgetFilter;
+            const matchesDate =
+              dateFilter === "all" ||
+              (dateFilter === "advance" &&
+                new Date(investment.dateAdvance) >= startDate &&
+                new Date(investment.dateAdvance) <= endDate) ||
+              (dateFilter === "payment" &&
+                new Date(investment.datePayment) >= startDate &&
+                new Date(investment.datePayment) <= endDate);
+
+            return matchesType && matchesBudget && matchesDate;
+          });
+        }
+
+        populateTable(filterInvestments("type1"), "investment-type-1");
+        populateTable(filterInvestments("type2"), "investment-type-2");
+        populateTable(filterInvestments("type3"), "investment-type-3");
+
+        // Update overall status
+        document.getElementById("overall-status").textContent = `
+                Total Advances: $${totalAdvances.toLocaleString()}
+                | Total Payments: $${totalPayments.toLocaleString()}
+                | Target: $${totalTarget.toLocaleString()}
+                | Overall Status: ${overallStatus}
+            `;
+      }
+
+      // Event Listeners for Filters
+      document
+        .getElementById("filter-investment-type")
+        .addEventListener("change", updateInvestmentTables);
+      document
+        .getElementById("filter-budget-code")
+        .addEventListener("change", updateInvestmentTables);
+      document
+        .getElementById("filter-date")
+        .addEventListener("change", updateInvestmentTables);
+      document
+        .getElementById("filter-start-date")
+        .addEventListener("change", updateInvestmentTables);
+      document
+        .getElementById("filter-end-date")
+        .addEventListener("change", updateInvestmentTables);
+
+      // Initialize Table
+      updateInvestmentTables();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de Rapport de Visite Médicale</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #e0e0e0; /* Background color for the page */
+        margin: 0;
+        padding: 0;
+      }
+      .form-container {
+        max-width: 600px; /* Reduced width for smaller form */
+        margin: 30px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9; /* Background color for the form */
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 22px; /* Slightly smaller font size */
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: 500;
+        color: #34495e;
+      }
+      input[type="text"],
+      input[type="date"],
+      input[type="number"],
+      select,
+      textarea {
+        width: calc(100% - 20px); /* Adjusted width for smaller fields */
+        padding: 8px; /* Reduced padding */
+        margin-bottom: 15px;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px; /* Smaller font size */
+      }
+      input[type="text"]:focus,
+      input[type="date"]:focus,
+      input[type="number"]:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #3498db;
+        outline: none;
+      }
+      textarea {
+        resize: vertical;
+        font-size: 14px; /* Consistent font size */
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      button[type="submit"] {
+        background-color: #3498db;
+        color: #ffffff;
+        border: none;
+        padding: 12px 20px; /* Adjusted padding for smaller button */
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+      button[type="submit"]:hover {
+        background-color: #2980b9;
+      }
+      input[type="file"] {
+        padding: 0;
+        background: #ffffff;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 14px; /* Consistent font size */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>formulaire suivi de Visite Médicale</h1>
+      <form action="/submit-form" method="post" enctype="multipart/form-data">
+        <label for="numero-emp">Numéro d'Employé :</label>
+        <input type="text" id="numero-emp" name="numero-emp" required />
+
+        <label for="date-visite">Date de la Visite Médicale :</label>
+        <input type="date" id="date-visite" name="date-visite" required />
+
+        <label for="nom-medecin">Numéro de bultein:</label>
+        <input type="text" id="nom-medecin" name="nom-medecin" required />
+
+        <label for="specialite">Spécialité :</label>
+        <select id="specialite" name="specialite" required>
+          <option value="">Sélectionnez une spécialité</option>
+          <option value="cardiologie">Cardiologie</option>
+          <option value="dermatologie">Dermatologie</option>
+          <option value="neurologie">Neurologie</option>
+          <option value="pediatrie">Pédiatrie</option>
+          <option value="gastroenterologie">Gastro-entérologie</option>
+          <option value="orthopedie">Orthopédie</option>
+          <option value="chirurgie">Chirurgie</option>
+          <option value="endocrinologie">Endocrinologie</option>
+          <option value="psychiatrie">Psychiatrie</option>
+          <option value="autre">Autre</option>
+        </select>
+
+        <label for="montant-paye">Montant Payé :</label>
+        <input
+          type="number"
+          id="montant-paye"
+          name="montant-paye"
+          step="0.01"
+          required
+        />
+
+        <label for="montant-pharmacie"
+          >Montant Payé en Pharmacie(si le pharmacie non Approuvé) :</label
+        >
+        <input
+          type="number"
+          id="montant-pharmacie"
+          name="montant-pharmacie"
+          step="0.01"
+        />
+        <label for="montant-paye">Montant rembourser medicin :</label>
+        <input
+          type="number"
+          id="montant-paye"
+          name="montant-paye"
+          step="0.01"
+          required
+        />
+
+        <label for="montant-pharmacie"
+          >Montant rembourser en Pharmacie(si le pharmacie non Approuvé)
+          :</label
+        >
+        <input
+          type="number"
+          id="montant-pharmacie"
+          name="montant-pharmacie"
+          step="0.01"
+        />
+        <label for="montant-pharmacie">mt autres soins :</label>
+        <input
+          type="number"
+          id="montant-pharmacie"
+          name="montant-pharmacie"
+          step="0.01"
+        />
+        <label for="montant-pharmacie">mt rembourser autres soins :</label>
+        <input
+          type="number"
+          id="montant-pharmacie"
+          name="montant-pharmacie"
+          step="0.01"
+        />
+        <button type="submit">Soumettre le Rapport</button>
+      </form>
+    </div>
+  </body>
+</html>

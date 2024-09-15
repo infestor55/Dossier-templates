@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings & Customization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .settings-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .settings-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .settings-section label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #34495e;
+        }
+
+        .settings-section input[type="text"], .settings-section input[type="number"], 
+        .settings-section select, .settings-section button, .settings-section input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        .settings-section button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .settings-section button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Company Logo</div>
+        <nav>
+            <ul>
+                <li><a href="finance_home_page.html">Home</a></li>
+                <li><a href="budget.html">Budget Overview</a></li>
+                <li><a href="reporting.html">Reports</a></li>
+                <li><a href="forecasting.html">Forecasting</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="data_integration.html">data Integration</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="settings-section">
+            <h2>User Management</h2>
+            <label for="userName">User Name</label>
+            <input type="text" id="userName" placeholder="Enter user name">
+
+            <label for="userEmail">User Email</label>
+            <input type="email" id="userEmail" placeholder="Enter user email">
+
+            <label for="userRole">Assign Role</label>
+            <select id="userRole">
+                <option value="viewOnly">View-Only</option>
+                <option value="editor">Editor</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <button type="button" onclick="addUser()">Add User</button>
+            <div id="userOutput"></div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Budget Categories</h2>
+            <label for="categoryName">Category Name</label>
+            <input type="text" id="categoryName" placeholder="Enter category name">
+
+            <label for="categoryLimit">Set Limit</label>
+            <input type="number" id="categoryLimit" placeholder="Enter limit amount">
+
+            <button type="button" onclick="addCategory()">Add Category</button>
+            <div id="categoryOutput"></div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Notification Settings</h2>
+            <label for="notificationType">Notification Type</label>
+            <select id="notificationType">
+                <option value="email">Email</option>
+                <option value="dashboard">Dashboard Notification</option>
+            </select>
+
+            <label for="notificationTime">Notification Timing</label>
+            <select id="notificationTime">
+                <option value="immediate">Immediate</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+            </select>
+
+            <button type="button" onclick="setNotification()">Set Notification</button>
+            <div id="notificationOutput"></div>
+        </section>
+    </main>
+
+    <script>
+        // Function to add a user
+        function addUser() {
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const userRole = document.getElementById('userRole').value;
+
+            if (userName && userEmail && userRole) {
+                document.getElementById('userOutput').innerText = User ${userName} with email ${userEmail} assigned as ${userRole}.;
+            } else {
+                document.getElementById('userOutput').innerText = 'Please fill in all user details.';
+            }
+        }
+
+        // Function to add a budget category
+        function addCategory() {
+            const categoryName = document.getElementById('categoryName').value;
+            const categoryLimit = document.getElementById('categoryLimit').value;
+
+            if (categoryName && categoryLimit) {
+                document.getElementById('categoryOutput').innerText = Category ${categoryName} with limit of ${categoryLimit} added.;
+            } else {
+                document.getElementById('categoryOutput').innerText = 'Please fill in all category details.';
+            }
+        }
+
+        // Function to set notification
+        function setNotification() {
+            const notificationType = document.getElementById('notificationType').value;
+            const notificationTime = document.getElementById('notificationTime').value;
+
+            if (notificationType && notificationTime) {
+                document.getElementById('notificationOutput').innerText = Notification set as ${notificationType} with ${notificationTime} timing.;
+            } else {
+                document.getElementById('notificationOutput').innerText = 'Please select both notification type and timing.';
+            }
+        }
+    </script>
+</body>
+</html>

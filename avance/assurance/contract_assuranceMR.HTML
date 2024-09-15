@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR Insurance Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #003366; /* Dark blue background */
+            color: #FFA500; /* Orange text */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns items at the top */
+            min-height: 100vh;
+            box-sizing: border-box;
+            padding: 20px; /* Added padding to avoid content touching the edges */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #FFA500; /* Orange text */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .file-input {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .file-input input[type="file"] {
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #FFA500; /* Orange text */
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .form-group input[type="number"]::-webkit-inner-spin-button,
+        .form-group input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            max-height: 300px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            background-color: #00408a;
+            transform: scale(1);
+        }
+
+        .sidebar {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 36px;
+            color: #FFA500; /* Orange text */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">BKFOOD</div>
+    <div class="container">
+        <h1>Contract Assurance MR</h1>
+        <form>
+            <div class="file-input">
+                <input type="file" id="contract-file" name="contract-file" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+            <div class="form-group">
+                <label for="contract-number">Numero Contract:</label>
+                <input type="text" id="contract-number" name="contract-number" placeholder="Enter contract number" required>
+            </div>
+            <div class="form-group">
+                <label for="affectation">Affectation:</label>
+                <input type="text" id="affectation" name="affectation" placeholder="Enter affectation details" required>
+            </div>
+            <div class="form-group">
+                <label for="company-name">Compagnie:</label>
+                <select id="company-name" name="company-name" required>
+                    <option value="" disabled selected>Choisissez une compagnie</option>
+                    <option value="AMI">AMI</option>
+                    <option value="COMMAR">COMMAR</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start-date">Date debut:</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+                <label for="end-date">Date fin:</label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <div class="form-group">
+                <label for="annual-fees">MT ANNUAL (HT):</label>
+                <input type="number" id="annual-fees" name="annual-fees" step="0.01" placeholder="Enter annual fees in HT" required>
+            </div>
+            <div class="form-group">
+                <label for="contract-number">Numero D'avenant:</label>
+                <input type="text" id="contract-number" name="contract-number" placeholder="Enter contract number" required>
+            </div>
+            <div class="form-group">
+                <label for="contract-number">Nombre des Avenant :</label>
+                <input type="text" id="contract-number" name="contract-number" placeholder="Enter contract number" required>
+            </div>
+            <div class="form-group">
+                <label for="start-date">Date D'avenant:</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Provide any additional information"></textarea>
+            </div>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulaire de demande de stage</h1>
+            <div class="form-group">
+                <label for="person-in-charge">Demandeur de Stage</label>
+                <input type="text" id="person-in-charge" name="person-in-charge" required>
+            </div>
+            <div class="form-group">
+                <label for="person-in-charge">act principal proposer </label>
+                <input type="text" id="person-in-charge" name="person-in-charge" required>
+            </div>
+            <div class="form-group">
+                <label for="further-skills">SYNOPSIS</label>
+                <textarea id="further-skills" name="further-skills" rows="4" placeholder="Additional skills required..."></textarea>
+            </div>
+             <div class="form-group">
+                <label for="submission-date">Date de l’exécution de la demande</label>
+                <input type="date" id="submission-date" name="submission-date" value="" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="skills-needed">Département:</label>
+                <select id="skills-needed" name="skills-needed" required>
+                   <option value="" disabled selected>Select choice</option>
+                    <option value="programming">COMMUNICATION</option>
+                    <option value="data-analysis">TRADE MARKETING</option>
+                    <option value="project-management">SUPPLY CHAIN</option>
+                    <option value="graphic-design">RH</option>
+                    <option value="graphic-design">FINANCE</option>
+                    <option value="graphic-design">ACCT</option>
+                </select>
+             </div>
+             <form action="#" method="post">
+            <div class="form-group">
+                <label for="internship-type">Type de stage</label>
+                <select id="internship-type" name="internship-type" required>
+                    <option value="" disabled selected>Select choice</option>
+                    <option value="pfe">PFE (Projet de Fin d'Études)</option>
+                    <option value="stage">Stage D'été</option>
+                    <option value="stage">PFA</option>
+                </select>
+                 <div class="form-group">
+                <label for="internship-type">Durée du stage :</label>
+                <select id="internship-type" name="internship-type" required>
+                    <option value="" disabled selected>Select choice</option>
+                    <option value="pfe">1MOIS</option>
+                    <option value="stage">2MOIS</option>
+                    <option value="pfe">3MOIS</option>
+                    <option value="stage">6MOIS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skills-needed">Compétences requises</label>
+                <select id="skills-needed" name="skills-needed" required>
+                   <option value="" disabled selected>Select choice</option>
+                    <option value="programming">Programming</option>
+                    <option value="data-analysis">Data Analysis</option>
+                    <option value="project-management">Project Management</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="project-management">FINANCE</option>
+                    <option value="graphic-design">ACCT</option>
+                </select>
+            </div>
+                <label for="domaine-experience">SOFT SKILLS :</label>
+<select id="domaine-experience" name="domaine-experience[]" multiple required>
+<option value="power-bi">COMMUNICATION</option>
+<option value="python">ETC</option>
+<option value="excel">ETCl</option>
+</select>
+     <label for="languages">Langues :</label>
+<select id="languages" name="languages" multiple required>
+    <option value="french">Français</option>
+    <option value="english">Anglais</option>
+    <option value="german">Allemand</option>
+    <option value="italian">Italien</option>
+    <option value="arabic">Arabe</option>
+    <option value="spanish">Espagnol</option>
+    <!-- Add more options as needed -->
+    </select>
+            <div class="form-group">
+                <label for="further-skills">Autres compétences</label>
+                <textarea id="further-skills" name="further-skills" rows="4" placeholder="Additional skills required..."></textarea>
+            </div>
+             
+            
+            <div class="form-group">
+                <label for="start-date">Date pour commencer le stage</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+              
+       <div class="form-group">
+         <label for="cv-upload">Télécharger le CV (s’il y a déjà une candidate)</label>
+          <input type="file" id="cv-upload" name="cv-upload" accept=".pdf,.doc,.docx">
+       </div>
+                <button type="submit">Envoyer une demande</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Automatically set the date of filling the demand to today's date
+        document.getElementById('submission-date').value = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>

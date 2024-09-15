@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de Recrutement</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the form */
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form heading */
+        .form-container h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Form labels */
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        /* Form inputs */
+        form input[type="text"],
+        form input[type="date"],
+        form select,
+        form textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Textarea specific styles */
+        form textarea {
+            resize: vertical;
+        }
+
+        /* File upload styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        form input[type="file"] {
+            border: none;
+            padding: 0;
+            background: #fff;
+        }
+
+        /* Submit button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function setDate() {
+            const today = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+            document.getElementById('date-formulaire').value = today;
+        }
+
+     window.onload = setDate; // Set the date when the page loads
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Recrutement:Fiche d'expression de besoin</h1>
+        <form>
+            <label for="nom-directeur">Matricule:</label>
+            <input type="text" id="nom-directeur" name="nom-directeur" required>
+            <label for="nom-directeur">Manager Hierarchique :</label>
+            <input type="text" id="nom-directeur" name="nom-directeur" required>
+            
+            <label for="date-formulaire">Date de Remplissage :</label>
+            <input type="date" id="date-formulaire" name="date-formulaire" readonly>
+            
+        <label for="departement">Département :</label>
+<select id="departement" name="departement" required>
+    <option value="">Sélectionnez un département</option>
+    <option value="rh">Ressources Humaines</option>
+    <option value="cdg">CDG</option>
+    <option value="supplychain">Supply Chain</option>
+    <option value="finance">Finance</option>
+    <option value="acct">Comptabilité</option>
+    <option value="juridique">Juridique</option>
+    <!-- Add more options as needed -->
+</select>
+
+            
+            <label for="poste">Poste à Pourvoir :</label>
+            <select id="poste" name="poste" required>
+                <option value="">Sélectionnez un poste</option>
+                <option value="data-analyste">Data Analyste</option>
+                <option value="finance">Finance</option>
+                <option value="acct">Comptabilité</option>
+                <option value="juridique">Juridique</option>
+                <option value="rh">Ressources Humaines</option>
+                <option value="supply-chain">Supply Chain</option>
+                <option value="commercial">Commercial</option>
+                <!-- Add more options as needed -->
+            </select>
+            <label for="motif">Motif :</label>
+<select id="motif" name="motif" required>
+<option value="">Sélectionnez un motif</option>
+<option value="remplacement-temporaire">Remplacement Temporaire</option>
+<option value="remplacement">Remplacement</option>
+<option value="nouveau-poste">Nouveau Poste</option>
+</select>
+
+
+            <label for="diplome">Diplôme Requis :</label>
+            <select id="diplome" name="diplome" required>
+                <option value="">Sélectionnez un diplôme</option>
+                <option value="bachelor">Baccalauréat</option>
+                <option value="master">Master</option>
+                <option value="autre">Autre</option>
+            </select>
+            <label for="responsibility">Responsabilité Managériale :</label>
+<select id="responsibility" name="responsibility" required>
+<option value="">Sélectionnez une option</option>
+<option value="oui">Oui</option>
+<option value="non">Non</option>
+</select>
+
+            
+            
+            <label for="experience">Années d'Expérience :</label>
+            <select id="experience" name="experience" required>
+                <option value="">Sélectionnez les années d'expérience</option>
+                <option value="0-2">0-2 ans</option>
+                <option value="3-5">3-5 ans</option>
+                <option value="6-10">6-10 ans</option>
+                <option value="plus-de-10">Plus de 10 ans</option>
+            </select>
+        <label for="languages">Langues :</label>
+    <select id="languages" name="languages" multiple required>
+    <option value="french">Français</option>
+    <option value="english">Anglais</option>
+    <option value="german">Allemand</option>
+    <option value="italian">Italien</option>
+    <option value="arabic">Arabe</option>
+    <option value="spanish">Espagnol</option>
+    <!-- Add more options as needed -->
+    </select>
+    <label for="domaine-experience">Domaine d'Expérience Intendue :</label>
+<select id="domaine-experience" name="domaine-experience[]" multiple required>
+<option value="power-bi">Power BI</option>
+<option value="python">Python</option>
+<option value="excel">Excel</option>
+<option value="sql">SQL</option>
+<option value="tableau">Tableau</option>
+<option value="r-programming">R Programming</option>
+<option value="data-analysis">Data Analysis</option>
+<option value="machine-learning">Machine Learning</option>
+<option value="project-management">Project Management</option>
+<option value="financial-modeling">Financial Modeling</option>
+</select>
+
+    
+<label for="contrat">Nature de Contrat :</label>
+<select id="contrat" name="contrat" required>
+<option value="">Sélectionnez la nature du contrat</option>
+<option value="cdi">CDI</option>
+<option value="cdd">CDD</option>
+<option value="cvp">CVP</option>
+</select>
+<label for="responsable-recrutement">Responsable Recrutement :</label>
+<select id="responsable-recrutement" name="responsable-recrutement" required>
+<option value="">Sélectionnez un responsable</option>
+<option value="anis-ben">Anis Ben</option>
+<option value="sarah-kamal">Sarah Kamal</option>
+<option value="omar-dali">Omar Dali</option>
+<option value="nora-bouazizi">Nora Bouazizi</option>
+<option value="youssef-mahmoud">Youssef Mahmoud</option>
+</select>
+
+            
+            <label for="justification">Justification de la Recrutement :</label>
+            <textarea id="justification" name="justification" rows="4" required></textarea>
+            
+            <div class="form-group">
+                <label for="cv-upload">Télécharger le CV (s’il y a déjà une candidate)</label>
+                <input type="file" id="cv-upload" name="cv-upload" accept=".pdf,.doc,.docx">
+            </div>
+              <div class="form-group">
+                <label for="cv-upload">Télécharger le fiche de poste (s’il y a déjà une candidate)</label>
+                <input type="file" id="cv-upload" name="cv-upload" accept=".pdf,.doc,.docx">
+            </div>
+            <button type="submit">Soumettre la Demande</button>
+        </form>
+    </div>
+</body>
+</html>

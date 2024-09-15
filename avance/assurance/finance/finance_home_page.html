@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .quick-stats .stat {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 20px;
+            flex: 1;
+            margin-right: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .quick-stats .stat:last-child {
+            margin-right: 0;
+        }
+
+        .alerts {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .alerts h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .alert {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert:last-child {
+            margin-bottom: 0;
+        }
+
+        .alert p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Company Logo</div>
+        <nav>
+            <ul>
+                <li><a href="finance_home_page.html">Home</a></li>
+                <li><a href="budget.html">Budget Overview</a></li>
+                <li><a href="investment.html">investment overview</a></li>
+                <li><a href="forecasting.html">Forecasting</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="quick-stats">
+            <div class="stat">
+                <h3>Total Budget</h3>
+                <p>$5,000,000</p>
+            </div>
+            <div class="stat">
+                <h3>Spent Amount</h3>
+                <p>$3,200,000</p>
+            </div>
+            <div class="stat">
+                <h3>Remaining Budget</h3>
+                <p>$1,800,000</p>
+            </div>
+            <div class="stat">
+                <h3>Variance</h3>
+                <p>-5%</p>
+            </div>
+        </section>
+
+        <section class="alerts">
+            <h2>Alerts & Notifications</h2>
+            <div class="alert">
+                <p>⚠️ Marketing department is over budget by $200,000.</p>
+            </div>
+            <div class="alert">
+                <p>🔔 Upcoming deadline: Budget revisions due by September 30th.</p>
+            </div>
+            <div class="alert">
+                <p>✅ Sales department is on track.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+

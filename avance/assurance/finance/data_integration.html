@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .data-integration-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .data-integration-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .data-integration-section label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #34495e;
+        }
+
+        .data-integration-section input[type="file"], 
+        .data-integration-section select, 
+        .data-integration-section button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        .data-integration-section button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .data-integration-section button:hover {
+            background-color: #2980b9;
+        }
+
+        .output {
+            margin-top: 20px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Company Logo</div>
+        <nav>
+            <ul>
+                <li><a href="finance_home_page.html">Home</a></li>
+                <li><a href="budget.html">Budget Overview</a></li>
+                <li><a href="reporting.html">Reports</a></li>
+                <li><a href="forecasting.html">Forecasting</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="data-integration-section">
+            <h2>Import/Export Data</h2>
+            <label for="importFile">Import Data (CSV, Excel, etc.)</label>
+            <input type="file" id="importFile" accept=".csv, .xlsx, .xls">
+
+            <label for="exportFormat">Export Data As</label>
+            <select id="exportFormat">
+                <option value="csv">CSV</option>
+                <option value="excel">Excel</option>
+                <option value="pdf">PDF</option>
+            </select>
+
+            <button type="button" onclick="handleDataImport()">Import Data</button>
+            <button type="button" onclick="handleDataExport()">Export Data</button>
+            <div id="dataOutput" class="output"></div>
+        </section>
+
+        <section class="data-integration-section">
+            <h2>API Integration</h2>
+            <label for="apiEndpoint">API Endpoint</label>
+            <input type="text" id="apiEndpoint" placeholder="Enter API endpoint URL">
+
+            <label for="apiKey">API Key</label>
+            <input type="text" id="apiKey" placeholder="Enter API key">
+
+            <button type="button" onclick="connectAPI()">Connect API</button>
+            <div id="apiOutput" class="output"></div>
+        </section>
+    </main>
+
+    <script>
+        // Function to handle data import
+        function handleDataImport() {
+            const fileInput = document.getElementById('importFile');
+            const file = fileInput.files[0];
+            if (file) {
+                document.getElementById('dataOutput').innerText = `Imported file: ${file.name}`;
+                // Additional logic to handle file upload
+            } else {
+                document.getElementById('dataOutput').innerText = 'Please select a file to import.';
+            }
+        }
+
+        // Function to handle data export
+        function handleDataExport() {
+            const format = document.getElementById('exportFormat').value;
+            document.getElementById('dataOutput').innerText = `Exporting data as ${format}...`;
+            // Additional logic to handle data export
+        }
+
+        // Function to connect API
+        function connectAPI() {
+            const apiEndpoint = document.getElementById('apiEndpoint').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            if (apiEndpoint && apiKey) {
+                document.getElementById('apiOutput').innerText = `Connecting to API at ${apiEndpoint} with key ${apiKey}.`;
+                // Additional logic to connect to the API
+            } else {
+                document.getElementById('apiOutput').innerText = 'Please enter both API endpoint and key.';
+            }
+        }
+    </script>
+</body>
+</html>

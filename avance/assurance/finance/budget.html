@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .filter-section select,
+        .filter-section input[type="date"] {
+            padding: 5px;
+            margin-right: 20px;
+        }
+
+        .dashboard {
+            margin-bottom: 40px;
+        }
+
+        .dashboard h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .dashboard-table th,
+        .dashboard-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .dashboard-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .status-on-track {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-off-track {
+            color: red;
+            font-weight: bold;
+        }
+
+        .demand-section {
+            margin-top: 40px;
+        }
+
+        .demand-section h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .demand-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .demand-table th,
+        .demand-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .demand-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .details {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .details h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Company Logo</div>
+        <nav>
+            <ul>
+                <li><a href="finance_home_page.html">Home</a></li>
+                <li><a href="budget.html">Budget Overview</a></li>
+                <li><a href="reporting.html">Reports</a></li>
+                <li><a href="forecasting.html">Forecasting</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="filter-section">
+            <label for="filter-department">Filter by Department:</label>
+            <select id="filter-department">
+                <option value="all">All</option>
+                <option value="marketing">Marketing</option>
+                <option value="sales">Sales</option>
+                <option value="hr">HR</option>
+                <option value="it">IT</option>
+            </select>
+
+            <label for="filter-date">Filter by Date:</label>
+            <input type="date" id="start-date" />
+            <input type="date" id="end-date" />
+            <button onclick="applyFilters()">Apply Filters</button>
+        </section>
+
+        <section class="dashboard">
+            <h2>Department Budget Overview</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Initial Budget</th>
+                        <th>Revised Budget</th>
+                        <th>Spent Amount</th>
+                        <th>Remaining Budget</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="budget-data">
+                    <!-- Rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="demand-section">
+            <h2>Budget Demands</h2>
+            <table class="demand-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Demand Date</th>
+                        <th>Amount Requested</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="demand-data">
+                    <!-- Rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        // Example data for budgets
+        const budgets = {
+            marketing: [
+                { initialBudget: 1000000, revisedBudget: 1200000, spentAmount: 800000, remainingBudget: 400000, status: 'On Track' },
+                { initialBudget: 1500000, revisedBudget: 1600000, spentAmount: 1200000, remainingBudget: 400000, status: 'On Track' }
+            ],
+            sales: [
+                { initialBudget: 2000000, revisedBudget: 2200000, spentAmount: 1800000, remainingBudget: 400000, status: 'On Track' },
+                { initialBudget: 1700000, revisedBudget: 1800000, spentAmount: 1600000, remainingBudget: 200000, status: 'On Track' }
+            ]
+            // Add more departments as needed
+        };
+
+        // Example data for demands
+        const demands = [
+            { department: 'Marketing', demandDate: '2024-08-15', amountRequested: 50000, status: 'Approved' },
+            { department: 'Sales', demandDate: '2024-08-16', amountRequested: 70000, status: 'Pending' }
+            // Add more demands as needed
+        ];
+
+        // Function to update the budget table
+        function updateBudgetTable() {
+            const tbody = document.getElementById('budget-data');
+            tbody.innerHTML = '';
+
+            Object.keys(budgets).forEach(department => {
+                budgets[department].forEach(budget => {
+                    const row = `
+                        <tr>
+                            <td>${department}</td>
+                            <td>$${budget.initialBudget.toLocaleString()}</td>
+                            <td>$${budget.revisedBudget.toLocaleString()}</td>
+                            <td>$${budget.spentAmount.toLocaleString()}</td>
+                            <td>$${budget.remainingBudget.toLocaleString()}</td>
+                            <td class="${budget.status === 'On Track' ? 'status-on-track' : 'status-off-track'}">${budget.status}</td>
+                        </tr>
+                    `;
+                    tbody.insertAdjacentHTML('beforeend', row);
+                });
+            });
+        }
+
+        // Function to update the demand table
+        function updateDemandTable() {
+            const tbody = document.getElementById('demand-data');
+            tbody.innerHTML = '';
+
+            demands.forEach(demand => {
+                const row = `
+                    <tr>
+                        <td>${demand.department}</td>
+                        <td>${demand.demandDate}</td>
+                        <td>$${demand.amountRequested.toLocaleString()}</td>
+                        <td>${demand.status}</td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Function to apply filters
+        function applyFilters() {
+            const department = document.getElementById('filter-department').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // Filter budgets
+            let filteredBudgets = department === 'all' ? Object.keys(budgets) : [department];
+            const budgetTable = document.getElementById('budget-data');
+            budgetTable.innerHTML = '';
+
+            filteredBudgets.forEach(dep => {
+                budgets[dep].forEach(budget => {
+                    const budgetDate = new Date(); // Placeholder for actual date filtering
+                    if ((startDate && budgetDate < new Date(startDate)) || (endDate && budgetDate > new Date(endDate))) {
+                        return;
+                    }
+                    const row = `
+                        <tr>
+                            <td>${dep}</td>
+                            <td>$${budget.initialBudget.toLocaleString()}</td>
+                            <td>$${budget.revisedBudget.toLocaleString()}</td>
+                            <td>$${budget.spentAmount.toLocaleString()}</td>
+                            <td>$${budget.remainingBudget.toLocaleString()}</td>
+                            <td class="${budget.status === 'On Track' ? 'status-on-track' : 'status-off-track'}">${budget.status}</td>
+                        </tr>
+                    `;
+                    budgetTable.insertAdjacentHTML('beforeend', row);
+                });
+            });
+
+            // Filter demands (if needed)
+            const demandTable = document.getElementById('demand-data');
+            demandTable.innerHTML = '';
+
+            demands.forEach(demand => {
+                if ((startDate && new Date(demand.demandDate) < new Date(startDate)) || (endDate && new Date(demand.demandDate) > new Date(endDate))) {
+                    return;
+                }
+                const row = `
+                    <tr>
+                        <td>${demand.department}</td>
+                        <td>${demand.demandDate}</td>
+                        <td>$${demand.amountRequested.toLocaleString()}</td>
+                        <td>${demand.status}</td>
+                    </tr>
+                `;
+                demandTable.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Initialize tables
+        updateBudgetTable();
+        updateDemandTable();
+    </script>
+</body>
+</html>
+
+4

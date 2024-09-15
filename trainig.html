@@ -1,0 +1,237 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Department Training Selection</title>
+        <style>
+                body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center; /* Center the text within the header */
+    margin-bottom: 20px; /* Space between header and content */
+}
+
+form {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+option {
+    padding: 8px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 10px;
+    }
+}
+
+
+          </style>
+    </head>
+    <body>
+    <header>
+            <h1>BK Food Training Portal</h1>
+        </header>
+        <div class="notification">
+        Veuillez choisir une formation dans votre département et dans la Formation Commune uniquement.
+        </div>
+        <form>
+            <!-- HR Department -->
+            <label for="hr-trainings-acct">acct:</label>
+            <select id="hr-trainings-acct" name="hr-trainings-acct">
+                <option value="" disabled selected>Select a training</option>
+                <option value="hr-onboarding">Fiscalité approfondie</option>
+                <option value="hr-compliance">Consolidation</option>
+                <option value="hr-leadership">Procédure comptable de clôture et d’arrêtés de comptes</option>
+                <option value="hr-compliance">Elaboration des Tableaux de bord de gestion (Excel, Power Query, Power Pivot)</option>
+                <option value="hr-leadership">Inventaire physique des immobilisations et des stocks</option>
+            </select>
+            <br><br>
+
+            <!-- IT Department -->
+            <label for="it-trainings-cdg">CDG:</label>
+            <select id="it-trainings-cdg" name="it-trainings-cdg">
+                <option value="" disabled selected>Select a training</option>
+                <option value="it-cybersecurity">Power BI, Excel approfondi, PPT</option>
+                <option value="it-networking">Contrôle gestion et pilotage de la performance</option>
+            </select>
+            <br><br>
+
+            <!-- Finance Department -->
+            <label for="finance-trainings-supply-chain">Supply Chain:</label>
+            <select id="finance-trainings-supply-chain" name="finance-trainings-supply-chain">
+                <option value="" disabled selected>Select a training</option>
+                <option value="finance-accounting">Gestion de stock</option>
+                <option value="finance-investment">Conduite des chariots élévateurs</option>
+                <option value="finance-budgeting">Prévention des risques dans le transport routier et logistique</option>
+                <option value="finance-budgeting">Gestion parc/flotte</option>
+                <option value="finance-budgeting">Tableau de bord supply chain</option>
+            </select>
+            <br><br>
+
+            <!-- HR Department -->
+            <label for="hr-trainings-transit">transit:</label>
+            <select id="hr-trainings-transit" name="hr-trainings-transit">
+                <option value="" disabled selected>Select a training</option>
+                <option value="hr-onboarding">Tarif Douanière et Règle d'origine</option>
+                <option value="hr-compliance">Langue Anglais</option>
+                <option value="hr-leadership">Commerce Extérieur</option>
+                <option value="hr-leadership">Management/ Négociation</option>
+            </select>
+            <br><br>
+
+            <!-- IT Department -->
+            <label for="it-trainings-hse">HSE:</label>
+            <select id="it-trainings-hse" name="it-trainings-hse">
+                <option value="" disabled selected>Select a training</option>
+                <option value="it-cybersecurity">Premier soins, lutte contre l'incendie et Evacuation</option>
+                <option value="it-networking">Consignation déconsignation</option>
+                <option value="it-software-development">Conduite des chariots élévateurs</option>
+                <option value="it-cybersecurity">Bilan carbone et empreinte carbone</option>
+                <option value="it-networking">Responsable d'audit d'un Système de Management de la Santé et sécurité au travail selon : ISO45001 : 2018 (Formation Accréditée IRCA)</option>
+                <option value="it-software-development">Responsable d'audit d'un Système de Management ENV selon : ISO14001 : 2015 (Formation Accréditée IRCA)</option>
+            </select>
+            <br><br>
+
+            <!-- Finance Department -->
+            <label for="finance-trainings-technique">Technique:</label>
+            <select id="finance-trainings-technique" name="finance-trainings-technique">
+                <option value="" disabled selected>Select a training</option>
+                <option value="finance-accounting">Technique de Soudure ARGON TIG</option>
+                <option value="finance-investment">Maintenance des compresseurs</option>
+                <option value="finance-budgeting">Automate programme niveau 2</option>
+                <option value="finance-budgeting">Maintenance et entretien des mécanismes tournants</option>
+            </select>
+            <br><br>
+
+            <!-- Finance Department -->
+            <label for="finance-trainings-production">PRODUCTION:</label>
+            <select id="finance-trainings-production" name="finance-trainings-production">
+                <option value="" disabled selected>Select a training</option>
+                <option value="6sigma">6SIGMA</option>
+                <option value="tableau-de-bord">Tableau de bord</option>
+                <option value="communication">Communication</option>
+                <option value="gestion-de-stresse">Gestion de stress</option>
+                <option value="leadership">Leadership</option>
+            </select>
+            <br><br>
+
+            <!-- HR Department -->
+            <label for="hr-trainings-qualite">Qualité:</label>
+            <select id="hr-trainings-qualite" name="hr-trainings-qualite">
+                <option value="" disabled selected>Select a training</option>
+                <option value="hr-onboarding">ISO 17025 V 2017</option>
+                <option value="hr-compliance">Métrologie des équipements et calcul des incertitudes</option>
+                <option value="hr-leadership">Formation d’un panel interne pour l’analyse sensorielle</option>
+                <option value="hr-leadership">Les standards de la norme FSSC22000</option>
+                <option value="hr-leadership">Formation IRCA qualifiante ISO 9001 V 2015</option>
+                <option value="hr-leadership">Tableaux de bords et KPI SDA</option>
+            </select>
+            <br><br>
+
+            <!-- HR Department -->
+            <label for="hr-trainings-achat">ACHAT:</label>
+            <select id="hr-trainings-achat" name="hr-trainings-achat">
+                <option value="" disabled selected>Select a training</option>
+                <option value="hr-onboarding">Maîtrise des coûts et achats responsables</option>
+                <option value="audit-evaluation-fournisseur">Audit et évaluation fournisseur</option>
+                <option value="communication-leadership-acheteurs">Communication et leadership pour acheteurs</option>
+                <option value="analyse-besoins-achats-cahiers-charges">Analyse des besoins d’achats et rédaction des cahiers des charges</option>
+            </select>
+            <br><br>
+
+            <!-- RH Department -->
+            <label for="rh-trainings">RH:</label>
+            <select id="rh-trainings" name="rh-trainings">
+                <option value="" disabled selected>Select a training</option>
+                <option value="droit-du-travail">Droit du travail</option>
+                <option value="rapports-de-travail">Les rapports de travail, l’entreprise et la sécurité sociale: Pour un partenariat efficace</option>
+                <option value="accident-travail-maladie-professionnel">Accident travail et maladie professionnelle</option>
+                <option value="gpec">GPEC</option>
+                <option value="communication-entreprise-marketing-rh">Communication entreprise et marketing RH</option>
+            </select>
+            <br><br>
+
+            <!-- Finance Department -->
+            <label for="finance-trainings-finance">Finance Department Trainings:</label>
+            <select id="finance
+
+    -trainings-finance" name="finance-trainings-finance">
+                <option value="" disabled selected>Select a training</option>
+                <option value="optimisation-recouvrement">Optimisation du Recouvrement Amiable et Judiciaire des Créances</option>
+                <option value="echelle-interet">Calcul de l'échelle d'intérêt</option>
+                <option value="negociation-conditions-banque">Négociation des conditions de banque et optimisation de la trésorerie</option>
+                <option value="moyens-paiement-etranger">Moyens de paiement à l'étranger</option>
+                <option value="optimisation-charge-financiere">Optimisation de la charge financière</option>
+                <option value="prevision-finance">Prévision Finance</option>
+                <option value="iso-31000">Formation certifiée en « ISO 31000 RISK MANAGER »</option>
+                <option value="analyse-donnees-tableaux-bord">Analyse des données & tableaux de bord commercial</option>
+            </select>
+            <br><br>
+
+            <!-- Formation Commune -->
+            <label for="formation-commune-trainings">Formation Commune:</label>
+            <select id="formation-commune-trainings" name="formation-commune-trainings">
+                <option value="" disabled selected>Select a training</option>
+                <option value="excel-avance-g1">Excel avancé G1</option>
+                <option value="excel-avance-g2">Excel avancé G2</option>
+                <option value="excel-avance-g3">Excel avancé G3</option>
+                <option value="excel-avance-g4">Excel avancé G4</option>
+                <option value="lean-management-g1">Lean Management G1</option>
+                <option value="lean-management-g2">Lean Management G2</option>
+                <option value="lean-management-g3">Lean Management G3</option>
+                <option value="lean-management-g4">Lean Management G4</option>
+                <option value="responsabilite-societal-social">Responsabilité sociétale et sociale</option>
+                <option value="risk-management">Risk Management</option>
+            </select>
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+    </html>

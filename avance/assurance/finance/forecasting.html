@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forecasting Tools</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      header {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      header nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      header nav ul li {
+        margin-left: 20px;
+      }
+
+      header nav ul li a {
+        color: #ecf0f1;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .scenario-analysis,
+      .automated-forecasting,
+      .what-if-analysis {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+      }
+
+      .scenario-analysis h2,
+      .automated-forecasting h2,
+      .what-if-analysis h2 {
+        margin-bottom: 20px;
+        color: #2c3e50;
+      }
+
+      .scenario-analysis label,
+      .automated-forecasting label,
+      .what-if-analysis label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #34495e;
+      }
+
+      .scenario-analysis select,
+      .automated-forecasting select,
+      .what-if-analysis select,
+      .scenario-analysis input[type="number"],
+      .automated-forecasting input[type="number"],
+      .what-if-analysis input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+      }
+
+      .scenario-analysis button,
+      .automated-forecasting button,
+      .what-if-analysis button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .scenario-analysis button:hover,
+      .automated-forecasting button:hover,
+      .what-if-analysis button:hover {
+        background-color: #2980b9;
+      }
+
+      .output {
+        margin-top: 20px;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Company Logo</div>
+      <nav>
+        <ul>
+          <li><a href="finance_home_page.html">Home</a></li>
+          <li><a href="budget.html">Budget Overview</a></li>
+          <li><a href="reporting.html">Reports</a></li>
+          <li><a href="forecasting.html">Forecasting</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="scenario-analysis">
+        <h2>Scenario Analysis</h2>
+        <label for="scenario">Select Scenario</label>
+        <select id="scenario" name="scenario">
+          <option value="base">Base Case</option>
+          <option value="optimistic">Optimistic</option>
+          <option value="pessimistic">Pessimistic</option>
+        </select>
+        <button type="button" onclick="runScenarioAnalysis()">
+          Run Analysis
+        </button>
+        <div id="scenarioOutput" class="output"></div>
+      </section>
+
+      <section class="automated-forecasting">
+        <h2>Automated Forecasting</h2>
+        <label for="historicalData">Use Historical Data</label>
+        <select id="historicalData" name="historicalData">
+          <option value="lastYear">Last Year</option>
+          <option value="lastQuarter">Last Quarter</option>
+          <option value="lastMonth">Last Month</option>
+        </select>
+        <button type="button" onclick="runAutomatedForecasting()">
+          Generate Forecast
+        </button>
+        <div id="forecastOutput" class="output"></div>
+      </section>
+
+      <section class="what-if-analysis">
+        <h2>What-If Analysis</h2>
+        <label for="revenueChange">Change in Revenue (%)</label>
+        <input
+          type="number"
+          id="revenueChange"
+          name="revenueChange"
+          placeholder="Enter percentage change in revenue"
+        />
+        <label for="costChange">Change in Costs (%)</label>
+        <input
+          type="number"
+          id="costChange"
+          name="costChange"
+          placeholder="Enter percentage change in costs"
+        />
+        <button type="button" onclick="runWhatIfAnalysis()">
+          Run What-If Analysis
+        </button>
+        <div id="whatIfOutput" class="output"></div>
+      </section>
+    </main>
+
+    <script>
+      // Function to run scenario analysis
+      function runScenarioAnalysis() {
+        const scenario = document.getElementById("scenario").value;
+        let outputText = "";
+
+        switch (scenario) {
+          case "base":
+            outputText = "Running base case scenario analysis...";
+            break;
+          case "optimistic":
+            outputText = "Running optimistic scenario analysis...";
+            break;
+          case "pessimistic":
+            outputText = "Running pessimistic scenario analysis...";
+            break;
+          default:
+            outputText = "Please select a valid scenario.";
+        }
+
+        document.getElementById("scenarioOutput").innerText = outputText;
+        // Additional logic to perform the actual analysis
+      }
+
+      // Function to run automated forecasting
+      function runAutomatedForecasting() {
+        const historicalData = document.getElementById("historicalData").value;
+        const forecastText = `Generating forecast using ${historicalData} data...`;
+
+        document.getElementById("forecastOutput").innerText = forecastText;
+        // Additional logic to perform the actual forecasting
+      }
+
+      // Function to run what-if analysis
+      function runWhatIfAnalysis() {
+        const revenueChange = document.getElementById("revenueChange").value;
+        const costChange = document.getElementById("costChange").value;
+
+        if (revenueChange === "" || costChange === "") {
+          document.getElementById("whatIfOutput").innerText =
+            "Please enter valid percentage changes for both revenue and costs.";
+        } else {
+          const whatIfText = `Running What-If analysis with ${revenueChange}% change in revenue and ${costChange}% change in costs...`;
+          document.getElementById("whatIfOutput").innerText = whatIfText;
+          // Additional logic to simulate the impact of the changes
+        }
+      }
+    </script>
+  </body>
+</html>
